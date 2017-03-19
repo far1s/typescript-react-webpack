@@ -10,9 +10,9 @@ mkdir src build
 npm init -y
 ```
 
-Install typescript and webpack
+Install `typescript`, `webpack` and `ts-loader`
 ```shell
-npm install --save-dev typescript webpack
+npm install --save-dev typescript webpack ts-loader
 ```
 
 Create `webpack.config.js` and add configurations
@@ -23,7 +23,7 @@ Insert following
 ```javascript
 var path = require('path');
 var config = {
-  entry: ['./src/App.tsx'],
+  entry: ['./src/App.tsx'],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
@@ -36,17 +36,12 @@ var config = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/
       }
     ]
   }
 };
 module.exports = config;
-```
-
-Install ts-loader
-```shell
-npm install --save-dev ts-loader
 ```
 
 Create `index.html`
@@ -68,7 +63,7 @@ Insert following
 </html>
 ```
 
-Add build script to package.json
+Add build script to `package.json`
 ```json
 {
   "name": "typescript-react-webpack",
@@ -81,19 +76,19 @@ Add build script to package.json
     "webpack": "^2.2.1"
   }
 }
-````
+```
 
 ## Part 2: ReactJS
 
-Install react and react-dom
+Install `react` and `react-dom`
 ```shell
 npm install --save-dev react react-dom
-````
+```
 Since we’re using a 3rd party library with Typescript, we’re going to need to npm install Typings as well.
 Install typings once globaly
 ```shell
 npm install typings -g
-````
+```
 
 Download the Definitely Typed files for React and ReactDOM.
 ```shell
@@ -101,7 +96,7 @@ typings install --save react
 typings install --save react-dom
 ```
 
-Notice that our directory now has a typings directory as well as a typings.json file. The typings.json file specifies all of the definition files we have installed, and the typings directory contains the actual definition files.
+Notice that our directory now has a typings directory as well as a `typings.json` file. The `typings.json` file specifies all of the definition files we have installed, and the typings directory contains the actual definition files.
 
 Now that we’re trying to use React with Typescript, we should create a Typescript configuration file in the root directory — be sure to name it `tsconfig.json`.
 ```shell
@@ -185,6 +180,5 @@ typescript-react-webpack
 ```shell
 npm run build
 ```
-
-Open index.html in browser
+Open `index.html` in browser
 If you see "Hello, Willson" everything is ok
